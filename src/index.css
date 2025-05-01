@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* 1) Base & Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+}
+/* 2) App layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.app-header {
+  height: 60px;
+  background: #1f2937;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 1.25rem;
+  z-index: 1000;
+  font-weight: bold;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+/* 3) Dashboard layout */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: calc(100% - 60px);
+}
+/* 4) Sidebar */
+.sidebar {
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px;
+  overflow-y: auto;
+}
+/* VideoList’s own <button> styling comes from your existing CSS */
+/* 5) Main Content */
+.main-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+/* 6) Stats row */
+.stats-row {
+  display: flex;
+  gap: 12px;
+}
+.stat-card {
+  background: #fff;
+  flex: 1;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+}
+.stat-label {
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+/* 7) Video card overrides */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  background: #fff;          /* your existing class */
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.video-container h2 {
+    width: 100%;               /* let text-align take full width */
+    text-align: center;        /* <— centers the text */
+    padding: 1rem 0;           /* vertical spacing only */
+    margin: 0;
+  }
+
+.video-placeholder {
+  padding: 60px;
+  text-align: center;
+  color: #6b7280;
+  border: 2px dashed #e2e8f0;
+  border-radius: 8px;
+}
+.video-container video {
+  margin: 0 auto;            /* <— block-center the video */
+  width: 90%;                /* or a fixed width if you prefer */
+  max-width: 720px;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+.controls label {
+  color: #4b5563;
+  font-size: 0.875rem;
+}
+.controls select {
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+.controls a.download {
+  margin-left: auto;
+  background: #3b82f6;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+/* 8) Responsive tweak */
+@media (max-width: 800px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+  .stats-row {
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    flex: 1 1 45%;
+  }
+}
+
+.sidebar .log-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar .log-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+  
+  .sidebar .log-search {
+    padding: 0.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .sidebar .log-search:focus {
+    border-color: #3b82f6;
+  }
+  
+  .sidebar .log-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar .log-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  .sidebar .log-item button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 4px;
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  
+  .sidebar .log-item button:hover {
+    background: #f1f5f9;
+  }
+  
+  .sidebar .log-item.active button {
+    background: #3b82f6;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar .log-item-icon {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .sidebar .log-item-name {
+    font-family: 'Inter', sans-serif;
+  font-size: 1rem;           /* a bit larger */
+  font-weight: 500;          /* medium weight */
+  letter-spacing: 0.5px;     /* subtle breathing room */
+  color: #1f2937;            /* dark gray */
+  transition: color 0.2s;
+  text-transform: capitalize;
+  }
+  
+  .sidebar .no-results {
+    color: #6b7280;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .sidebar .log-item:hover .log-item-name,
+.sidebar .log-item.active .log-item-name {
+  color: #3b82f6;            /* your accent blue */
+}
